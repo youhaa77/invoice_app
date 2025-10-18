@@ -62,7 +62,12 @@ def fetch_rates_from_api():
 
 def get_exchange_rates():
     """Get current exchange rates (cached or fetched if needed)."""
-    if not exchange_data["conversion_rates"]:
+    # if cache empty OR older than 24h → reload
+    if (
+        not exchange_data["conversion_rates"]
+        or not exchange_data["last_update"]
+        or datetime.utcnow() - exchange_data["last_update"] > timedelta(hours=24)
+    ):
         if not load_rates_from_file():
             fetch_rates_from_api()
     return exchange_data["conversion_rates"]
