@@ -1,0 +1,39 @@
+schema {
+    query: Query
+}
+
+
+type Invoice {
+    id: ID!
+    customer_name: String!
+    amount: Float!
+    currency: String!
+    description: String
+    converted_amount_usd: Float!
+    exchange_rate_to_usd: Float!
+    base_currency: String!
+    payment_method: String
+    payment_status: String
+    created_at: String
+}
+
+type InvoiceResult {
+    success: Boolean!
+    errors: [String]
+    invoice: Invoice
+}
+
+type InvoicesResult {
+    success: Boolean!
+    errors: [String]
+    invoices: [Invoice]
+}
+
+
+type Query {
+    listInvoices: InvoicesResult!
+    getInvoice(id: ID!): InvoiceResult!
+}
+
+
+

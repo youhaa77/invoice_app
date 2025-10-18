@@ -72,11 +72,8 @@ swagger_template = {
                     {"in": "body", "name": "body", "schema": {
                         "type": "object",
                         "properties": {
-                            "customer_name": {"type": "string"},
-                            "amount": {"type": "number"},
-                            "currency": {"type": "string"},
-                            "description": {"type": "string"},
-                            "payment_status": {"type": "string"}
+                            "customer_name": {"type": "string", "example": "Youhanna Baddar"},
+                            "description": {"type": "string", "example": "Edited description"}
                         }
                     }}
                 ],
